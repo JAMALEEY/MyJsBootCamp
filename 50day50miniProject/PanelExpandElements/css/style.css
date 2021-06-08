@@ -22,7 +22,7 @@ body {
 }
 
 .panel {
-    background-size: auto 100%;
+    background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
     height: 80vh;
@@ -32,7 +32,7 @@ body {
     flex: 0.5;
     margin: 10px;
     position: relative;
-    transition: flex 0.7 ease-in;
+    transition: flex 0.8s ease-in;
 }
 
 .panel h3 {
@@ -46,12 +46,13 @@ body {
 }
 
 
-.panel.active{
-    flex: 5
+.panel.active {
+    flex: 5;
 }
 
 .panel.active h3{
     opacity: 1;
+    transition: opacity 0.3s ease-in 0.4s;
 }
 
 
