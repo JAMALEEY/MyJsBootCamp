@@ -33,14 +33,36 @@ prev.addEventListener('click', () => {
 
 
 function update(){
-        for (let circle of circles && let circle of ) {
-            if (idx < currentActive) {
+    circles.forEach((circle, idx) => {
+        if(idx < currentActive) {
                 circle.classList.add('active')
             } else {
                 circle.classList.remove('active')
             }
-        }
+    })
 
+    const actives = document.querySelectorAll('.active')
+    //  -1 to reduce the % that we will attribute to the progress css because without -1 it excedes the circle
+    progress.style.width = (actives.length -1) / (circles.length -1) * 100 + '%'
+    
+
+
+        // starting point
+    if(currentActive === 1) {
+        prev.disabled = true 
+        // ending point
+    } else if(currentActive === circles.length) {
+        next.disabled = true
+    } else {
+        prev.disabled = false
+        next.disabled = false
+    }
+        
 }
+    
+
+
+
+
 
 
