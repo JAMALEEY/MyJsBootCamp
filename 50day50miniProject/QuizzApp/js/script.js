@@ -1,3 +1,13 @@
+
+
+
+
+const timerDisplay = document.querySelector('.display__time-left');
+
+
+
+
+
 const quizData = [ {
     question: "Which language runs in a web browser ?",
     a : "a : Java",
@@ -114,3 +124,35 @@ submitBtn.addEventListener('click', () => {
             }
         }
 })
+
+
+let countdown;
+timer (120)
+
+function timer(seconds) {
+    const now = Date.now();
+    const then = now + seconds * 1000;
+    displayTimeLeft(seconds)
+    countdown = setInterval(() => {
+        const secondsLeft = Math.round(( then -  Date.now()) / 1000);
+        // check if we should stop the interval
+        if (secondsLeft < 0) {
+                        // store a countdown variable
+            clearInterval(countdown);
+            return;
+        }
+        displayTimeLeft(secondsLeft)
+    }, 1000);
+}
+
+function displayTimeLeft(seconds) {
+    const minutes = Math.floor(seconds / 60);
+    const remainderSeconds = seconds % 60;
+    const display = `${minutes}:${remainderSeconds < 10 ? '0' : '' }${remainderSeconds}`;
+    document.title = display;
+    timerDisplay.textContent = display;
+}
+
+function displayEndTime(timestamp) {
+    const end = new Date(timestamp);
+}
